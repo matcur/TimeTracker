@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TimeTracker.DataAccess;
+using TimeTracker.Domain.Services;
 
 namespace TimeTracker
 {
@@ -23,7 +24,10 @@ namespace TimeTracker
         {
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            
             services.AddDbContext<AppDb>();
+            services.AddTransient<TasksService>();
+            services.AddTransient<ProjectService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -49,9 +53,7 @@ namespace TimeTracker
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
 
             app.UseSpa(spa =>
