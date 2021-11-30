@@ -26,8 +26,8 @@ namespace TimeTracker
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
             services.AddDbContext<AppDb>();
-            services.AddTransient<TasksService>();
-            services.AddTransient<ProjectService>();
+            services.AddTransient<ITasksService, TasksService>();
+            services.AddTransient<IProjectService, ProjectService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

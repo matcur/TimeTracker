@@ -10,9 +10,9 @@ namespace TimeTracker.Controllers
 {
     public class TasksController : Controller
     {
-        private readonly TasksService _tasksService;
+        private readonly ITasksService _tasksService;
 
-        public TasksController(TasksService tasksService)
+        public TasksController(ITasksService tasksService)
         {
             _tasksService = tasksService;
         }
