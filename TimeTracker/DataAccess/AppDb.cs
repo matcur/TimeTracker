@@ -13,7 +13,6 @@ namespace TimeTracker.DataAccess
 
         public AppDb(DbContextOptions options): base(options)
         {
-            Database.EnsureCreated();
         }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
