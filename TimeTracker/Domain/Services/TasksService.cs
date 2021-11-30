@@ -9,9 +9,10 @@ using TimeTracker.ViewModels.Task;
 
 namespace TimeTracker.Domain.Services
 {
-    public class TasksService
+    public class TasksService : ITasksService
     {
         private readonly AppDb _db;
+        
         private readonly DbSet<Task> _tasks;
 
         public TasksService(AppDb db)

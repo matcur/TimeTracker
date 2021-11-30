@@ -10,7 +10,7 @@ using TimeTracker.ViewModels.Project;
 
 namespace TimeTracker.Domain.Services
 {
-    public class ProjectService
+    public class ProjectService : IProjectService
     {
         private readonly AppDb _db;
         
