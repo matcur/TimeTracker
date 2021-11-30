@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using TimeTracker.Attributes;
 using TimeTracker.DataAccess.Models;
 using TimeTracker.Domain.Services;
 using TimeTracker.ViewModels;
@@ -41,6 +42,7 @@ namespace TimeTracker.Controllers
         }
 
         [HttpPut]
+        [ModelValidation]
         [Route("tasks/{id:guid}")]
         public IActionResult Update([FromForm]UpdateTask task)
         {
@@ -55,6 +57,7 @@ namespace TimeTracker.Controllers
         }
         
         [HttpPost]
+        [ModelValidation]
         [Route("tasks/create")]
         public IActionResult Create([FromForm]NewTask task)
         {

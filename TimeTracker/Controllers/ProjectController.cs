@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TimeTracker.Attributes;
 using TimeTracker.Domain.Services;
 using TimeTracker.ViewModels;
 using TimeTracker.ViewModels.Project;
@@ -24,6 +25,7 @@ namespace TimeTracker.Controllers
         }
         
         [HttpPost]
+        [ModelValidation]
         [Route("projects/create")]
         public IActionResult Create([FromForm]NewProject project)
         {
