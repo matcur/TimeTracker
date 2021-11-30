@@ -1,4 +1,5 @@
 ﻿using System;
+using TimeTracker.ViewModels;
 
 namespace TimeTracker.DataAccess.Models
 {
@@ -11,5 +12,14 @@ namespace TimeTracker.DataAccess.Models
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }
+
+        public Project() {}
+        
+        public Project(NewProject other)
+        {
+            Name = other.Name;
+            CreateDate = other.CreateDate;
+            UpdateDate = other.UpdateDate;
+        }
     }
 }

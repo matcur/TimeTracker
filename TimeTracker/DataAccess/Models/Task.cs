@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using TimeTracker.ViewModels;
 
 namespace TimeTracker.DataAccess.Models
 {
@@ -14,12 +15,31 @@ namespace TimeTracker.DataAccess.Models
 
         public DateTime StartDate { get; set; }
 
-        public DateTime CancelDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }
 
         public Project Project { get; set; }
+
+        public Task() {}
+        
+        public Task(UpdateTask other)
+        {
+            Id = other.Id;
+            Name = other.Name;
+            ProjectId = other.ProjectId;
+            StartDate = other.StartDate;
+            EndDate = other.EndDate;
+        }
+
+        public Task(NewTask other)
+        {
+            Name = other.Name;
+            ProjectId = other.ProjectId;
+            StartDate = other.StartDate;
+            EndDate = other.EndDate;
+        }
     }
 }
