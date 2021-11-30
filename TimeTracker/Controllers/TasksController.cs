@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TimeTracker.DataAccess.Models;
 using TimeTracker.Domain.Services;
 using TimeTracker.ViewModels;
+using TimeTracker.ViewModels.Task;
 
 namespace TimeTracker.Controllers
 {

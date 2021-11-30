@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using TimeTracker.DataAccess;
 using TimeTracker.DataAccess.Models;
 using TimeTracker.ViewModels;
+using TimeTracker.ViewModels.Task;
 
 namespace TimeTracker.Domain.Services
 {

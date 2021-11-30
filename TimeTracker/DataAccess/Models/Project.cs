@@ -1,5 +1,6 @@
 ﻿using System;
 using TimeTracker.ViewModels;
+using TimeTracker.ViewModels.Project;
 
 namespace TimeTracker.DataAccess.Models
 {

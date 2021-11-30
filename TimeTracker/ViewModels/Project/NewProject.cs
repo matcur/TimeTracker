@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TimeTracker.ViewModels
+namespace TimeTracker.ViewModels.Project
 {
     public class NewProject
     {

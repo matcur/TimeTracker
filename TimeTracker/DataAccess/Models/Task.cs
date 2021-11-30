@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using TimeTracker.ViewModels;
+using TimeTracker.ViewModels.Task;
 
 namespace TimeTracker.DataAccess.Models
 {

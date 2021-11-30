@@ -1,19 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TimeTracker.ViewModels
+namespace TimeTracker.ViewModels.Task
 {
-    public class UpdateTask
+    public class NewTask
     {
         [Required]
-        public Guid Id { get; set; }
-
         public string Name { get; set; }
 
+        [Required]
         public Guid ProjectId { get; set; }
 
+        [Required]
         public DateTime StartDate { get; set; }
 
+        [Required]
         public DateTime EndDate { get; set; }
     }
 }
