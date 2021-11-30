@@ -14,7 +14,6 @@ namespace TimeTracker.ViewModels.Task
         [Required]
         public DateTime StartDate { get; set; }
 
-        [Required]
         public DateTime EndDate { get; set; }
     }
 }
