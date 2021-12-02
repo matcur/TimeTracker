@@ -24,6 +24,20 @@ namespace TimeTracker.DataAccess.Models
 
         public Project Project { get; set; }
 
+        [NotMapped]
+        public string SpendTime
+        {
+            get
+            {
+                if (EndDate == DateTime.MinValue)
+                {
+                    return GetReadableDateDiff(StartDate, DateTime.Now);
+                }
+                
+                return GetReadableDateDiff(StartDate, EndDate);
+            }
+        }
+
         public Task() {}
         
         public Task(UpdateTask other)
@@ -41,6 +55,14 @@ namespace TimeTracker.DataAccess.Models
             ProjectId = other.ProjectId;
             StartDate = other.StartDate;
             EndDate = other.EndDate;
+        }
+
+        private string GetReadableDateDiff(DateTime start, DateTime end)
+        {
+            var hours = (int)(end - start).TotalHours;
+            var minutes = (int)(end - start).TotalMinutes;
+                    
+            return $"{hours}:{minutes % 60}";
         }
     }
 }

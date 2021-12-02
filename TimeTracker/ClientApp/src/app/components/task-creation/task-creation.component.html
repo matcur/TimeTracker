@@ -3,8 +3,8 @@
     <div class="modal-dialog" role="document">
       <div class="form-group">
         <label>Имя</label>
-        <input required id="name" [(ngModel)]="newTask.name"/>
-        <span *ngIf="errors.name != ''" class="alert-danger">{{errors.name}}</span>
+        <input required id="name" [(ngModel)]="newTask.name" class="form-control"/>
+        <span *ngIf="errors.name != ''" class="text-danger">{{errors.name}}</span>
       </div>
       <div class="form-group">
         <label>Проект</label>
@@ -12,11 +12,12 @@
       </div>
       <div class="form-group">
         <label>Время начала</label>
-        <input id="startDate" type="datetime-local" [(ngModel)]="newTask.startDate"/>
+        <input id="startDate" type="datetime-local" class="form-control" [(ngModel)]="newTask.startDate"/>
+        <span *ngIf="errors.startDate != ''" class="text-danger">{{errors.startDate}}</span>
       </div>
       <div class="form-group">
         <label>Время конца</label>
-        <input id="endDate" type="datetime-local" [(ngModel)]="newTask.endDate"/>
+        <input id="endDate" type="datetime-local" class="form-control" [(ngModel)]="newTask.endDate"/>
       </div>
       <button class="btn btn-primary" (click)="onSubmit()">Добавить</button>
     </div>

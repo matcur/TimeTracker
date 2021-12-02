@@ -46,7 +46,7 @@ export class TaskCreationComponent implements OnInit {
     const start = new Date(this.newTask.startDate);
     const end = new Date(this.newTask.endDate);
     if (end.getTime() != 0 && start > end) {
-      this.errors.startDate = 'Дата запуска не может быть больше даты окончания';
+      this.errors.startDate = 'Дата начала не может быть больше даты окончания';
       return;
     }
 

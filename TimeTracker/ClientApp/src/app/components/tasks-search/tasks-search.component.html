@@ -1,16 +1,18 @@
 <div class="card card-body tasks-search">
-  <label>
-    Время начала
-    <input type="datetime-local" (change)="onStartDateChanged($event.target.value)"/>
-  </label>
-  <label>
-    Время окончания
-    <input type="datetime-local" (change)="onEndDateChanged($event.target.value)"/>
-  </label>
-  <label>
-    Проект
-    <app-projects-select (idChanged)="onProjectIdChanged($event)"></app-projects-select>
-  </label>
+  <div class="tasks-search__filters form-group">
+    <label>
+      Время начала
+      <input type="datetime-local" class="form-control" (change)="onStartDateChanged($event.target.value)"/>
+    </label>
+    <label>
+      Время окончания
+      <input type="datetime-local" class="form-control" (change)="onEndDateChanged($event.target.value)"/>
+    </label>
+    <label>
+      Проект
+      <app-projects-select (idChanged)="onProjectIdChanged($event)"></app-projects-select>
+    </label>
+  </div>
   <button
     class="btn btn-primary add-new-task-btn"
     (click)="onCreateNewClick()">

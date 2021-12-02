@@ -31,6 +31,7 @@ export class TaskListComponent implements OnInit {
   }
 
   filterTasks(tasks) {
+    console.log(tasks)
     const parameters = this.filterParameters;
 
     const byId = t => parameters.id == '-1' || t.projectId == parameters.id;

@@ -1,3 +1,11 @@
 .add-new-task-btn {
   width: 230px;
 }
+
+.tasks-search__filters {
+  display: flex;
+}
+
+.tasks-search__filters label {
+  margin-right: 10px;
+}

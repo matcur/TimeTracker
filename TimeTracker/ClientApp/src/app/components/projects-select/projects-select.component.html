@@ -1,4 +1,4 @@
-<select (input)="onProjectChange($event)">
+<select class="form-control" (input)="onProjectChange($event)">
   <option *ngFor="let project of projects" [value]="project.id">
     {{ project.name }}
   </option>
