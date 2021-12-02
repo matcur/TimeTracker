@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TasksService} from "../../services/tasks/tasks.service";
 import {Router} from "@angular/router";
 import {NewTaskService} from "../../services/new-task/new-task.service";
-import {NewTask, NewTaskComment} from "../../../shared/models";
+import {CommentType, NewTask, NewTaskComment} from "../../../shared/models";
 
 @Component({
   selector: 'app-task-creation',
@@ -14,10 +14,10 @@ export class TaskCreationComponent implements OnInit {
   newTask: NewTask = {
     name: '',
     startDate: new Date().toISOString(),
-    projectId: "5c897ac0-4f7a-4f02-a6c1-bb763c397ab4",
+    projectId: "",
     endDate: new Date(0).toISOString(),
     comments: [{
-      type: 'Text',
+      type: CommentType.Text,
       content: ''
     }]
   };

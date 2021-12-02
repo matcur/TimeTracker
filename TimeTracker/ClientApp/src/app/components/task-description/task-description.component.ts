@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NewTaskComment, TaskComment} from "../../../shared/models";
+import {CommentType, NewTaskComment} from "../../../shared/models";
 import {FileUploadService} from "../../services/file-upload/file-upload.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class TaskDescriptionComponent implements OnInit {
   valueChanged = new EventEmitter<NewTaskComment>();
 
   value: NewTaskComment = {
-    type: 'Text',
+    type: CommentType.Text,
     content: '',
   }
 

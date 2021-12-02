@@ -20,7 +20,7 @@ namespace TimeTracker.Files
                 _file.CopyTo(stream);
             }
 
-            return path;
+            return _file.FileName;
         }
     }
 }

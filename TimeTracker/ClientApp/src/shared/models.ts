@@ -12,7 +12,7 @@
 export type TaskComment = {
   id: number
   taskId: number
-  type: 'FilePath' | 'Text'
+  type: CommentType
   content: string
 }
 export type Project = {
@@ -23,3 +23,7 @@ export type Project = {
 }
 export type NewTask = Omit<Task, 'id' | 'createDate' | 'updateDate' | 'spendTime'>;
 export type NewTaskComment = Omit<TaskComment, 'id' | 'taskId'>;
+export enum CommentType {
+  Text,
+  FilePath
+}

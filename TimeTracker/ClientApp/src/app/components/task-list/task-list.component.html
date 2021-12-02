@@ -19,7 +19,12 @@
     <td>
       <a href="tasks/{{task.id}}">{{task.name}}</a>
     </td>
-    <td>{{task.comments[0]?.content}}</td>
+    <td *ngIf="task.comments[0].type == 1">
+      <a href="/{{task.comments[0].content}}">{{task.comments[0].content}}</a>
+    </td>
+    <td *ngIf="task.comments[0].type == 0">
+      {{task.comments[0].content}}
+    </td>
     <td>{{task.spendTime}}</td>
     <td>{{getReadableDate(task.startDate)}}</td>
     <td>{{getReadableDate(task.endDate)}}</td>
