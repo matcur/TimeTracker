@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TimeTracker.Attributes;
 using TimeTracker.Domain.Services;
 using TimeTracker.ViewModels;
 using TimeTracker.ViewModels.Project;
+using TimeTracker.ViewModels.Task;
 
 namespace TimeTracker.Controllers
 {
@@ -16,7 +18,7 @@ namespace TimeTracker.Controllers
         }
         
         [HttpGet]
-        [Route("projects")]
+        [Route("api/projects")]
         public IActionResult Index()
         {
             var projects = _projectService.GetAll();
@@ -26,9 +28,15 @@ namespace TimeTracker.Controllers
         
         [HttpPost]
         [ModelValidation]
-        [Route("projects/create")]
-        public IActionResult Create([FromForm]NewProject project)
+        [Route("api/projects/create")]
+        public IActionResult Create([FromBody]string value)
         {
+            var project = JsonConvert.DeserializeObject<NewProject>(value);
+            if (!TryValidateModel(value))
+            {
+                return BadRequest();
+            }
+            
             var newProject = _projectService.Create(project);
             
             return Json(newProject);

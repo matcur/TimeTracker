@@ -1,0 +1,19 @@
+<div class="card card-body tasks-search">
+  <label>
+    Время начала
+    <input type="datetime-local" (change)="onStartDateChanged($event.target.value)"/>
+  </label>
+  <label>
+    Время окончания
+    <input type="datetime-local" (change)="onEndDateChanged($event.target.value)"/>
+  </label>
+  <label>
+    Проект
+    <app-projects-select (idChanged)="onProjectIdChanged($event)"></app-projects-select>
+  </label>
+  <button
+    class="btn btn-primary add-new-task-btn"
+    (click)="onCreateNewClick()">
+    Добавить новую задачу
+  </button>
+</div>

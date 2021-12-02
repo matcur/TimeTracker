@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TimeTracker.Attributes;
 using TimeTracker.DataAccess.Models;
 using TimeTracker.Domain.Services;
@@ -18,7 +20,7 @@ namespace TimeTracker.Controllers
         }
         
         [HttpGet]
-        [Route("tasks")]
+        [Route("api/tasks")]
         public IActionResult Index(
             [FromQuery]DateTime? startDate,
             [FromQuery]DateTime? endDate,
@@ -30,7 +32,7 @@ namespace TimeTracker.Controllers
         }
 
         [HttpGet]
-        [Route("tasks/{id:guid}")]
+        [Route("api/tasks/{id:guid}")]
         public IActionResult Details([FromQuery]Guid id)
         {
             if (!_tasksService.Exists(id))
@@ -43,9 +45,14 @@ namespace TimeTracker.Controllers
 
         [HttpPut]
         [ModelValidation]
-        [Route("tasks/{id:guid}")]
-        public IActionResult Update([FromForm]UpdateTask task)
+        [Route("api/tasks/{id:guid}")]
+        public IActionResult Update([FromBody]string value)
         {
+            var task = JsonConvert.DeserializeObject<UpdateTask>(value);
+            if (!TryValidateModel(value))
+            {
+                return BadRequest();
+            }
             if (!_tasksService.Exists(task.Id))
             {
                 return NotFound($"Task with id = {task.Id} is not found.");
@@ -57,10 +64,15 @@ namespace TimeTracker.Controllers
         }
         
         [HttpPost]
-        [ModelValidation]
-        [Route("tasks/create")]
-        public IActionResult Create([FromForm]NewTask task)
+        [Route("api/tasks/create")]
+        public IActionResult Create([FromBody]string value)
         {
+            var task = JsonConvert.DeserializeObject<NewTask>(value);
+            if (!TryValidateModel(value))
+            {
+                return BadRequest();
+            }
+            
             var newTask = _tasksService.Create(task);
 
             return Json(newTask);

@@ -1,0 +1,24 @@
+<div class="modal fade new-task-modal" [ngClass]="{show: show}" tabindex="-1" role="dialog">
+  <div class="modal-content">
+    <div class="modal-dialog" role="document">
+      <div class="form-group">
+        <label>Имя</label>
+        <input required id="name" [(ngModel)]="newTask.name"/>
+        <span *ngIf="errors.name != ''" class="alert-danger">{{errors.name}}</span>
+      </div>
+      <div class="form-group">
+        <label>Проект</label>
+        <app-projects-select (idChanged)="onProjectIdChanged($event)"></app-projects-select>
+      </div>
+      <div class="form-group">
+        <label>Время начала</label>
+        <input id="startDate" type="datetime-local" [(ngModel)]="newTask.startDate"/>
+      </div>
+      <div class="form-group">
+        <label>Время конца</label>
+        <input id="endDate" type="datetime-local" [(ngModel)]="newTask.endDate"/>
+      </div>
+      <button class="btn btn-primary" (click)="onSubmit()">Добавить</button>
+    </div>
+  </div>
+</div>

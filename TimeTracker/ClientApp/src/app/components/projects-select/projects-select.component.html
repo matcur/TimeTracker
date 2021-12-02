@@ -1,0 +1,5 @@
+<select (input)="onProjectChange($event)">
+  <option *ngFor="let project of projects" [value]="project.id">
+    {{ project.name }}
+  </option>
+</select>

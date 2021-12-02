@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TimeTracker.DataAccess;
 using TimeTracker.Domain.Services;
+using TimeTracker.InputFormatters;
 
 namespace TimeTracker
 {
@@ -22,7 +23,10 @@ namespace TimeTracker
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options =>
+            {
+                options.InputFormatters.Insert(0, new JsonFormatter());
+            });
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
             services.AddDbContext<AppDb>();
@@ -42,7 +46,6 @@ namespace TimeTracker
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {

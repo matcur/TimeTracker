@@ -1,0 +1,26 @@
+<app-tasks-search
+  (startDateChanged)="onStartDateChange($event)"
+  (endDateChanged)="onEndDateChange($event)"
+  (projectIdChanged)="onProjectIdChanged($event)"></app-tasks-search>
+<table class="table table-bordered mt-2">
+  <thead>
+  <tr>
+    <td>Номер</td>
+    <td>Имя</td>
+    <td>Потраченное время</td>
+    <td>Время начала</td>
+    <td>Время окончания</td>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of filterTasks(tasks); let i=index;">
+      <td>{{i + 1}}</td>
+      <td>
+        <a href="tasks/{{task.id}}">{{task.name}}</a>
+      </td>
+      <td>{{task.spendTime}}</td>
+      <td>{{getReadableDate(task.startDate)}}</td>
+      <td>{{getReadableDate(task.endDate)}}</td>
+    </tr>
+  </tbody>
+</table>
