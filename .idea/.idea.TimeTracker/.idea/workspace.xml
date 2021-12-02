@@ -7,14 +7,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="056d3fb6-26b9-41bb-8d65-363208bd6e63" name="Default Changelist" comment="new: add tasks list and filtration in frontend">
+    <list default="true" id="056d3fb6-26b9-41bb-8d65-363208bd6e63" name="Default Changelist" comment="new: add SpendTime and add form-controls">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TimeTracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TimeTracker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/ClientApp/src/shared/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ClientApp/src/shared/models.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TimeTracker/DataAccess/Models/Task.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/DataAccess/Models/Task.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/DataAccess/Models/TaskComment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/DataAccess/Models/TaskComment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/Domain/Services/TasksService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/Domain/Services/TasksService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/TimeTracker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/TimeTracker.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeTracker/ViewModels/Task/NewTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TimeTracker/ViewModels/Task/NewTask.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,35 +47,29 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AF717487-59ED-495A-A865-7BAC4BC37279/3A/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ED92340B-5670-447A-B78A-69A564A858D3/6B/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FE3A9231-00E3-4076-86CD-E0E9C5637A58/4F/ContentType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Telegram/Telegram.Server/Core/Db/AppDb.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29A32884-3BDC-4762-AF89-C8FDC084C4D6/52/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Telegram/Telegram.Server/Web/Controllers/Api/ChatController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DC52899F-3381-4B42-AEEC-B444027006D3/D/IFormFile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5470554A-76B4-4037-B676-6B9C6D384105/E/Controller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AF717487-59ED-495A-A865-7BAC4BC37279/77/ReferenceHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29A32884-3BDC-4762-AF89-C8FDC084C4D6/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12F8289F-4024-4D71-9022-CB6EF860D1DB/55/JsonResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/AF717487-59ED-495A-A865-7BAC4BC37279/3A/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FE3A9231-00E3-4076-86CD-E0E9C5637A58/4F/ContentType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29A32884-3BDC-4762-AF89-C8FDC084C4D6/52/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29A32884-3BDC-4762-AF89-C8FDC084C4D6/8B/Guid.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TimeTracker/ClientApp/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12F8289F-4024-4D71-9022-CB6EF860D1DB/2D/BadRequestResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Telegram/Telegram.Server/Core/Attributes/Model/ModelValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12F8289F-4024-4D71-9022-CB6EF860D1DB/146/InputFormatter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29A32884-3BDC-4762-AF89-C8FDC084C4D6/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/TimeTracker/Controllers/IndexController.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/Models/TaskComment.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/.gitignore" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/models.ts" />
-      <option value="$PROJECT_DIR$/TimeTracker/ViewModels/UpdateTask.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/ViewModels/NewTask.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/ViewModels/NewProject.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/Models/Project.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/ViewModels/Project/NewProject.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/Attributes/ModelValidation.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/AppDb.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/ViewModels/Task/NewTask.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/Domain/Services/ProjectService.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/Domain/Services/IProjectService.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/Domain/Services/TasksService.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/services/tasks.service.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/task-list/task-list.component.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/services/app-http/app-http.service.ts" />
@@ -83,28 +84,39 @@
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.spec.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/services/new-task/new-task-service.service.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/InputFormatters/JsonFormatter.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/Startup.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/services/tasks/tasks.service.ts" />
-      <option value="$PROJECT_DIR$/TimeTracker/Controllers/TasksController.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/Controllers/ProjectController.cs" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.ts" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/shared/models.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/styles.css" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/index.html" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.css" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/app.component.html" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/app.module.ts" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/services/new-task/new-task.service.ts" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/shared/apiUrl.ts" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.ts" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.html" />
-      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/Models/Task.cs" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.html" />
-      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.html" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.html" />
       <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/tasks-search/tasks-search.component.css" />
+      <option value="$PROJECT_DIR$/TimeTracker/ViewModels/Task/NewComment.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/Models/TaskComment.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/Files/PublicFile.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/Controllers/FilesController.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/services/file-upload/file-upload.service.ts" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.html" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-description/task-description.component.ts" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-description/task-description.component.html" />
+      <option value="$PROJECT_DIR$/TimeTracker/ViewModels/Task/NewTask.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/AppDb.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/Controllers/TasksController.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/TimeTracker.csproj" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/services/tasks/tasks.service.ts" />
+      <option value="$PROJECT_DIR$/TimeTracker/Startup.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/Domain/Services/TasksService.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/shared/models.ts" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/projects-select/projects-select.component.ts" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.html" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-creation/task-creation.component.ts" />
+      <option value="$PROJECT_DIR$/TimeTracker/DataAccess/Models/Task.cs" />
+      <option value="$PROJECT_DIR$/TimeTracker/ClientApp/src/app/components/task-list/task-list.component.ts" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21dPIRBGLXaRnFllJG0ZHp62aBr" />
@@ -128,7 +140,7 @@
     <property name="ts.external.directory.path" value="C:\Users\rumat\RiderProjects\TimeTracker\TimeTracker\ClientApp\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Native Executable.Watch">
+  <component name="RunManager" selected=".NET Launch Settings Profile.TimeTracker">
     <configuration name="TimeTracker" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/TimeTracker/TimeTracker.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -209,7 +221,7 @@
       <workItem from="1638345525950" duration="19205000" />
       <workItem from="1638366199268" duration="9860000" />
       <workItem from="1638423478093" duration="6467000" />
-      <workItem from="1638430456969" duration="2325000" />
+      <workItem from="1638430456969" duration="12133000" />
     </task>
     <task id="LOCAL-00001" summary="new: add database">
       <created>1638271103550</created>
@@ -316,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638430882441</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="new: add SpendTime and add form-controls">
+      <created>1638432945636</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1638432945636</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +371,7 @@
     <MESSAGE value="upd: change implementations to interfaces in controllers" />
     <MESSAGE value="upd: remove Required attribute on NewTask.EndDate" />
     <MESSAGE value="new: add tasks list and filtration in frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="new: add tasks list and filtration in frontend" />
+    <MESSAGE value="new: add SpendTime and add form-controls" />
+    <option name="LAST_COMMIT_MESSAGE" value="new: add SpendTime and add form-controls" />
   </component>
 </project>

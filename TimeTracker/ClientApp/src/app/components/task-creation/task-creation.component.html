@@ -19,6 +19,7 @@
         <label>Время конца</label>
         <input id="endDate" type="datetime-local" class="form-control" [(ngModel)]="newTask.endDate"/>
       </div>
+      <app-task-description (valueChanged)="onDescriptionChanged($event)"></app-task-description>
       <button class="btn btn-primary" (click)="onSubmit()">Добавить</button>
     </div>
   </div>

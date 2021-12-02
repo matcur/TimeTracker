@@ -7,20 +7,28 @@
   <tr>
     <td>Номер</td>
     <td>Имя</td>
+    <td>Описание</td>
     <td>Потраченное время</td>
     <td>Время начала</td>
     <td>Время окончания</td>
   </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of filterTasks(tasks); let i=index;">
-      <td>{{i + 1}}</td>
-      <td>
-        <a href="tasks/{{task.id}}">{{task.name}}</a>
-      </td>
-      <td>{{task.spendTime}}</td>
-      <td>{{getReadableDate(task.startDate)}}</td>
-      <td>{{getReadableDate(task.endDate)}}</td>
-    </tr>
+  <tr *ngFor="let task of filterTasks(tasks); let i=index;">
+    <td>{{i + 1}}</td>
+    <td>
+      <a href="tasks/{{task.id}}">{{task.name}}</a>
+    </td>
+    <td>{{task.comments[0]?.content}}</td>
+    <td>{{task.spendTime}}</td>
+    <td>{{getReadableDate(task.startDate)}}</td>
+    <td>{{getReadableDate(task.endDate)}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>{{getSpentTime(filterTasks(tasks))}}</td>
+  </tr>
   </tbody>
 </table>

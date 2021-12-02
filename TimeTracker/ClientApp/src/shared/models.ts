@@ -7,17 +7,19 @@
   createDate: string
   updateDate: string
   spendTime: string
+  comments: Partial<TaskComment>[]
 }
 export type TaskComment = {
   id: number
   taskId: number
-  Type: 'FilePath' | 'Text'
+  type: 'FilePath' | 'Text'
   content: string
 }
 export type Project = {
-  id: number
+  id: string
   name: string
   createDate: string
   updateDate: string
 }
-export type NewTask = Omit<Task, 'id' | 'createDate' | 'updateDate' | 'spendTime'>
+export type NewTask = Omit<Task, 'id' | 'createDate' | 'updateDate' | 'spendTime'>;
+export type NewTaskComment = Omit<TaskComment, 'id' | 'taskId'>;

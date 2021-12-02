@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label>
+    Текст
+    <input class="form-control" type="radio" value="Text" name="type" [(ngModel)]="value.type">
+  </label>
+  <label>
+    Файл
+    <input class="form-control" type="radio" value="FilePath" name="type" [(ngModel)]="value.type">
+  </label>
+  <label *ngIf="value.type == 'Text'">
+    <input class="form-control"
+           type="text"
+           (input)="onTextChanged($event.target.value)">
+  </label>
+  <label *ngIf="value.type == 'FilePath'">
+    <input class="form-control"
+           type="file"
+           (change)="onFileChanged($event.target.files)">
+  </label>
+</div>

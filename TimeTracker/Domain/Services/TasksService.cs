@@ -23,7 +23,7 @@ namespace TimeTracker.Domain.Services
 
         public List<Task> GetFiltered(DateTime? startDate, DateTime? endDate, Guid? projectId)
         {
-            var query = _tasks.AsQueryable();
+            var query = _tasks.Include(t => t.Comments).AsQueryable();
             if (projectId.HasValue)
             {
                 query = query.Where(t => t.ProjectId == projectId.Value);
@@ -66,7 +66,10 @@ namespace TimeTracker.Domain.Services
 
         public Task Create(NewTask task)
         {
-            var newTask = new Task(task) {CreateDate = DateTime.Now};
+            var newTask = new Task(task)
+            {
+                CreateDate = DateTime.Now,
+            };
 
             _tasks.Add(newTask);
             _db.SaveChanges();

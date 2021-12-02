@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using TimeTracker.ViewModels.Task;
 
 namespace TimeTracker.DataAccess.Models
 {
@@ -15,5 +16,14 @@ namespace TimeTracker.DataAccess.Models
         public string Content { get; set; }
 
         public Task Task { get; set; }
+
+        public TaskComment() {}
+
+        public TaskComment(NewComment other)
+        {
+            TaskId = other.TaskId;
+            Type = other.Type;
+            Content = other.Content;
+        }
     }
 }

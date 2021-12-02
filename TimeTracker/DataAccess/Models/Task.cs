@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using TimeTracker.ViewModels;
 using TimeTracker.ViewModels.Task;
 
@@ -16,7 +18,7 @@ namespace TimeTracker.DataAccess.Models
 
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get; set; }   
 
         public DateTime CreateDate { get; set; }
 
@@ -24,12 +26,14 @@ namespace TimeTracker.DataAccess.Models
 
         public Project Project { get; set; }
 
+        public List<TaskComment> Comments { get; set; }
+
         [NotMapped]
         public string SpendTime
         {
             get
             {
-                if (EndDate == DateTime.MinValue)
+                if (EndDate == new DateTime(1970, 1, 1))
                 {
                     return GetReadableDateDiff(StartDate, DateTime.Now);
                 }
@@ -55,6 +59,7 @@ namespace TimeTracker.DataAccess.Models
             ProjectId = other.ProjectId;
             StartDate = other.StartDate;
             EndDate = other.EndDate;
+            Comments = other.Comments.Select(c => new TaskComment(c)).ToList();
         }
 
         private string GetReadableDateDiff(DateTime start, DateTime end)

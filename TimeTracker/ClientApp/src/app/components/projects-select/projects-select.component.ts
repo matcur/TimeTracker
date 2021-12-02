@@ -18,7 +18,10 @@ export class ProjectsSelectComponent implements OnInit {
   ngOnInit() {
     this.projectsService
       .getProjects()
-      .subscribe(projects => this.projects = projects)
+      .subscribe(projects => {
+        this.projects = projects;
+        this.idChanged.emit(projects[0].id);
+      })
   }
 
   onProjectChange($event: any) {

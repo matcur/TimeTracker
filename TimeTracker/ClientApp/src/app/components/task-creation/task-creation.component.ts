@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {TasksService} from "../../services/tasks/tasks.service";
 import {Router} from "@angular/router";
 import {NewTaskService} from "../../services/new-task/new-task.service";
-import {NewTask} from "../../../shared/models";
+import {NewTask, NewTaskComment} from "../../../shared/models";
 
 @Component({
   selector: 'app-task-creation',
@@ -13,9 +13,13 @@ import {NewTask} from "../../../shared/models";
 export class TaskCreationComponent implements OnInit {
   newTask: NewTask = {
     name: '',
-    startDate: new Date(0).toISOString(),
+    startDate: new Date().toISOString(),
     projectId: "5c897ac0-4f7a-4f02-a6c1-bb763c397ab4",
-    endDate: new Date().toISOString()
+    endDate: new Date(0).toISOString(),
+    comments: [{
+      type: 'Text',
+      content: ''
+    }]
   };
 
   errors = {
@@ -60,5 +64,9 @@ export class TaskCreationComponent implements OnInit {
   async startHideAnimation() {
     this.show = false
     await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  onDescriptionChanged(comment: NewTaskComment) {
+    this.newTask.comments = [comment];
   }
 }

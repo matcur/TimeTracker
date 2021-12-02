@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TasksService} from "../../services/tasks/tasks.service";
 import { Task } from '../../../shared/models';
 import {NewTaskService} from "../../services/new-task/new-task.service";
+import {min} from "rxjs/operators";
 
 @Component({
   selector: 'app-task-list',
@@ -16,6 +17,7 @@ export class TaskListComponent implements OnInit {
     startDate: null,
     endDate: null,
   }
+  utcStartTime = '1970-01-01T00:00:0';
 
   constructor(private tasksService: TasksService,
               private newTaskService: NewTaskService) { }
@@ -26,13 +28,12 @@ export class TaskListComponent implements OnInit {
       .subscribe(tasks => this.tasks = tasks);
     this.newTaskService
       .getSubject()
-      .subscribe(task => {
-        console.log('xy'); this.tasks.push(task)});
+      .subscribe(task => this.tasks.push(task));
   }
 
-  filterTasks(tasks) {
-    console.log(tasks)
+  filterTasks(tasks): Task[] {
     const parameters = this.filterParameters;
+    console.log(tasks)
 
     const byId = t => parameters.id == '-1' || t.projectId == parameters.id;
     const byStartDate = t => parameters.startDate == null || new Date(t.startDate) > parameters.startDate;
@@ -43,7 +44,7 @@ export class TaskListComponent implements OnInit {
   }
 
   getReadableDate(dateString: string) {
-    if (dateString == '') {
+    if (dateString == this.utcStartTime) {
       return '00:00';
     }
 
@@ -62,5 +63,20 @@ export class TaskListComponent implements OnInit {
 
   onProjectIdChanged(value: string) {
     this.filterParameters.id = value;
+  }
+
+  getSpentTime(tasks: Task[]) {
+    var hours = 0;
+    var minutes = 0;
+    tasks.forEach(task => {
+      const spendTime = task.spendTime.split(":");
+      hours += parseInt(spendTime[0])
+      minutes += parseInt(spendTime[1])
+    });
+
+    hours += parseInt((minutes / 60).toString());
+    minutes = minutes % 60;
+
+    return `${hours}:${minutes}`;
   }
 }

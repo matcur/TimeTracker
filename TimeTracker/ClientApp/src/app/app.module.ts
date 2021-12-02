@@ -12,6 +12,7 @@ import { TaskCreationComponent } from './components/task-creation/task-creation.
 import { ProjectsSelectComponent } from './components/projects-select/projects-select.component';
 import { FormBuilder } from '@angular/forms';
 import {NewTaskService} from "./services/new-task/new-task.service";
+import { TaskDescriptionComponent } from './components/task-description/task-description.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
     TasksSearchComponent,
     TaskCreationComponent,
     ProjectsSelectComponent,
+    TaskDescriptionComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
