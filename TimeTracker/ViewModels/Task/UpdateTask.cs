@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TimeTracker.ViewModels.Task
@@ -15,5 +16,7 @@ namespace TimeTracker.ViewModels.Task
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public List<NewComment> Comments { get; set; }
     }
 }

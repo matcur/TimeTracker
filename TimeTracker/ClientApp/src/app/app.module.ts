@@ -12,9 +12,16 @@ import { TaskCreationComponent } from './components/task-creation/task-creation.
 import { ProjectsSelectComponent } from './components/projects-select/projects-select.component';
 import { FormBuilder } from '@angular/forms';
 import {NewTaskService} from "./services/new-task/new-task.service";
-import { TaskDescriptionComponent } from './components/task-description/task-description.component';
+import { NewTaskCommentComponent } from './components/new-task-comment/new-task-comment.component';
+import { TaskUpdateComponent } from './components/task-update/task-update.component';
+import { CommentsUpdateComponent } from './components/comments-update/comments-update.component';
+import {TaskCommentsComponent} from "./components/task-comments/task-comments.component";
 
 const routes: Routes = [
+  {
+    path: '',
+    component: TaskListComponent,
+  },
   {
     path: 'tasks',
     component: TaskListComponent,
@@ -23,7 +30,11 @@ const routes: Routes = [
     path: 'tasks-creation',
     component: TaskCreationComponent,
     outlet: 'popup'
-  }
+  },
+  {
+    path: 'tasks/:id',
+    component: TaskUpdateComponent
+  },
 ]
 
 @NgModule({
@@ -33,7 +44,10 @@ const routes: Routes = [
     TasksSearchComponent,
     TaskCreationComponent,
     ProjectsSelectComponent,
-    TaskDescriptionComponent,
+    NewTaskCommentComponent,
+    TaskUpdateComponent,
+    TaskCommentsComponent,
+    CommentsUpdateComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

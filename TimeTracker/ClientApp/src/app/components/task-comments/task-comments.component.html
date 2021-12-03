@@ -1,0 +1,9 @@
+<p *ngFor="let comment of sort(task.comments)">
+  <span *ngIf="comment.type == filePath">
+    <a target="_blank" href="/{{comment.content}}">{{comment.content}}</a>
+  </span>
+
+  <span *ngIf="comment.type == text">
+    {{comment.content}}
+  </span>
+</p>

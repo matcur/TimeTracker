@@ -10,8 +10,8 @@
   comments: Partial<TaskComment>[]
 }
 export type TaskComment = {
-  id: number
-  taskId: number
+  id: string
+  taskId: string
   type: CommentType
   content: string
 }
@@ -22,6 +22,7 @@ export type Project = {
   updateDate: string
 }
 export type NewTask = Omit<Task, 'id' | 'createDate' | 'updateDate' | 'spendTime'>;
+export type UpdateTask = Omit<Task, 'createDate' | 'updateDate' | 'spendTime'>;
 export type NewTaskComment = Omit<TaskComment, 'id' | 'taskId'>;
 export enum CommentType {
   Text,

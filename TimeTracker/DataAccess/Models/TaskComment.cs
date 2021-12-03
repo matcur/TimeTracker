@@ -21,7 +21,6 @@ namespace TimeTracker.DataAccess.Models
 
         public TaskComment(NewComment other)
         {
-            TaskId = other.TaskId;
             Type = other.Type;
             Content = other.Content;
         }

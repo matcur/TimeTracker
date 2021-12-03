@@ -11,11 +11,13 @@ export class FileUploadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  postFile(file: File): Observable<string> {
+  postFile(files: FileList) {
     const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i], files[i].name);
+    }
 
     return this.httpClient
-      .post(this.endpoint, formData) as Observable<string>;
+      .post(this.endpoint, formData) as Observable<string[]>;
   }
 }

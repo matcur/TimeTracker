@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TimeTracker.Files;
@@ -16,9 +17,15 @@ namespace TimeTracker.Controllers
         
         [HttpPost]
         [Route("api/files")]
-        public IActionResult Index(IFormFile file)
+        public IActionResult Index(IFormFileCollection files)
         {
-            return Json(new PublicFile(file).Save(_webRootPath));
+            var paths = new List<string>();
+            foreach (var file in files)
+            {
+                paths.Add(new PublicFile(file).Save(_webRootPath));
+            }
+
+            return Json(paths);
         }
     }
 }

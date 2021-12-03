@@ -17,13 +17,10 @@
   <tr *ngFor="let task of filterTasks(tasks); let i=index;">
     <td>{{i + 1}}</td>
     <td>
-      <a href="tasks/{{task.id}}">{{task.name}}</a>
+      <a [routerLink]="['/tasks/' + task.id]">{{task.name}}</a>
     </td>
-    <td *ngIf="task.comments[0].type == 1">
-      <a href="/{{task.comments[0].content}}">{{task.comments[0].content}}</a>
-    </td>
-    <td *ngIf="task.comments[0].type == 0">
-      {{task.comments[0].content}}
+    <td>
+      <app-task-comments [task]="task"></app-task-comments>
     </td>
     <td>{{task.spendTime}}</td>
     <td>{{getReadableDate(task.startDate)}}</td>

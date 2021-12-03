@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -33,7 +34,7 @@ namespace TimeTracker.Controllers
 
         [HttpGet]
         [Route("api/tasks/{id:guid}")]
-        public IActionResult Details([FromQuery]Guid id)
+        public IActionResult Details([FromRoute]Guid id)
         {
             if (!_tasksService.Exists(id))
             {
@@ -58,9 +59,7 @@ namespace TimeTracker.Controllers
                 return NotFound($"Task with id = {task.Id} is not found.");
             }
 
-            _tasksService.Update(task);
-
-            return Ok();
+            return Ok(_tasksService.Update(task));
         }
         
         [HttpPost]
@@ -76,6 +75,28 @@ namespace TimeTracker.Controllers
             var newTask = _tasksService.Create(task);
 
             return Json(newTask);
+        }
+        
+        [HttpDelete]
+        [Route("api/task-comments/{id:guid}")]
+        public IActionResult RemoveComment(Guid id)
+        {
+            _tasksService.RemoveComment(id);
+
+            return Ok();
+        }
+        
+        [HttpPost]
+        [Route("api/tasks/{id:guid}/comments")]
+        public IActionResult Create(Guid id, [FromBody]string commentsString)
+        {
+            var comments = JsonConvert.DeserializeObject<List<NewComment>>(commentsString);
+            if (!_tasksService.Exists(id))
+            {
+                return NotFound();
+            }
+
+            return Ok(_tasksService.AddComments(comments, id));
         }
     }
 }

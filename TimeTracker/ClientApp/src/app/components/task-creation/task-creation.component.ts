@@ -38,7 +38,7 @@ export class TaskCreationComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => this.show = true, 100)
+    setTimeout(() => this.show = true, 100);
   }
 
   async onSubmit() {
@@ -54,6 +54,7 @@ export class TaskCreationComponent implements OnInit {
       return;
     }
 
+    console.log(this.newTask);
     const task = await this.tasksService.create(this.newTask);
     this.newTaskService.update(task);
 
@@ -66,7 +67,7 @@ export class TaskCreationComponent implements OnInit {
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
 
-  onDescriptionChanged(comment: NewTaskComment) {
-    this.newTask.comments = [comment];
+  onDescriptionChanged(comments: NewTaskComment[]) {
+    this.newTask.comments = comments;
   }
 }

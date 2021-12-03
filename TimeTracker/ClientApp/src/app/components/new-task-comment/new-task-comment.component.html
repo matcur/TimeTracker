@@ -1,0 +1,15 @@
+<div class="form-group task-creation">
+  <label>
+    Текст
+    <input class="form-control"
+           type="text"
+           (input)="onTextChanged($event.target.value)">
+  </label>
+  <label>
+    Файлы
+    <input class="form-control file-control"
+           type="file"
+           (change)="onFileChanged($event.target.files)"
+           multiple>
+  </label>
+</div>

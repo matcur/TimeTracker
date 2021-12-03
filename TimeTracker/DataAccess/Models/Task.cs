@@ -33,6 +33,11 @@ namespace TimeTracker.DataAccess.Models
         {
             get
             {
+                if (StartDate > DateTime.Now)
+                {
+                    return "0:0";
+                }
+                
                 if (EndDate == new DateTime(1970, 1, 1))
                 {
                     return GetReadableDateDiff(StartDate, DateTime.Now);
@@ -51,6 +56,7 @@ namespace TimeTracker.DataAccess.Models
             ProjectId = other.ProjectId;
             StartDate = other.StartDate;
             EndDate = other.EndDate;
+            Comments = other.Comments.Select(c => new TaskComment(c)).ToList();
         }
 
         public Task(NewTask other)
@@ -66,7 +72,7 @@ namespace TimeTracker.DataAccess.Models
         {
             var hours = (int)(end - start).TotalHours;
             var minutes = (int)(end - start).TotalMinutes;
-                    
+            
             return $"{hours}:{minutes % 60}";
         }
     }

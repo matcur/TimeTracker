@@ -46,7 +46,9 @@ namespace TimeTracker.Domain.Services
         {
             EnsureTaskExisting(id);
 
-            return _tasks.First(t => t.Id == id);
+            return _tasks
+                .Include(t => t.Comments)
+                .First(t => t.Id == id);
         }
 
         public bool Exists(Guid id)
@@ -54,7 +56,7 @@ namespace TimeTracker.Domain.Services
             return _tasks.Any(t => t.Id == id);
         }
 
-        public void Update(UpdateTask task)
+        public Task Update(UpdateTask task)
         {
             EnsureTaskExisting(task.Id);
 
@@ -62,6 +64,8 @@ namespace TimeTracker.Domain.Services
             
             _tasks.Update(updateTask);
             _db.SaveChanges();
+
+            return updateTask;
         }
 
         public Task Create(NewTask task)
@@ -75,6 +79,33 @@ namespace TimeTracker.Domain.Services
             _db.SaveChanges();
             
             return newTask;
+        }
+
+        public List<TaskComment> AddComments(IEnumerable<NewComment> comments, Guid taskId)
+        {
+            EnsureTaskExisting(taskId);
+
+            var newComments = comments.Select(c => new TaskComment(c)
+            {
+                TaskId = taskId
+            }).ToList();
+            _db.TaskComments.AddRange(newComments);
+
+            return newComments;
+        }
+
+        public void RemoveComment(Guid id)
+        {
+            var comment = new TaskComment{Id = id};
+            
+            _db.TaskComments.Attach(comment);
+            _db.TaskComments.Remove(comment);
+            _db.SaveChanges();
+        }
+
+        public bool CommentExists(Guid id)
+        {
+            return _db.TaskComments.Any(t => t.Id == id);
         }
 
         private void EnsureTaskExisting(Guid id)

@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TasksService} from "../../services/tasks/tasks.service";
-import { Task } from '../../../shared/models';
+import {CommentType, Task} from '../../../shared/models';
 import {NewTaskService} from "../../services/new-task/new-task.service";
 import {min} from "rxjs/operators";
+import {UpdatedTaskService} from "../../services/updated-task/updated-task.service";
 
 @Component({
   selector: 'app-task-list',
@@ -20,7 +21,8 @@ export class TaskListComponent implements OnInit {
   utcStartTime = '1970-01-01T00:00:0';
 
   constructor(private tasksService: TasksService,
-              private newTaskService: NewTaskService) { }
+              private newTaskService: NewTaskService,
+              private updatedTaskService: UpdatedTaskService) { }
 
   ngOnInit() {
     this.tasksService
@@ -29,11 +31,22 @@ export class TaskListComponent implements OnInit {
     this.newTaskService
       .getSubject()
       .subscribe(task => this.tasks.push(task));
+    this.updatedTaskService
+      .getSubject()
+      .subscribe(task => this.updateTask(task));
+  }
+
+  updateTask(task: Task) {
+    const tasks = this.tasks;
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].id == task.id) {
+        tasks[i] = task;
+      }
+    }
   }
 
   filterTasks(tasks): Task[] {
     const parameters = this.filterParameters;
-    console.log(tasks)
 
     const byId = t => parameters.id == '-1' || t.projectId == parameters.id;
     const byStartDate = t => parameters.startDate == null || new Date(t.startDate) > parameters.startDate;

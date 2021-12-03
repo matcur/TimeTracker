@@ -1,0 +1,14 @@
+<p *ngFor="let comment of task.comments">
+  <span *ngIf="comment.type == filePath">
+    <a href="/{{comment.content}}">{{comment.content}}</a>
+  </span>
+
+  <span *ngIf="comment.type == text">
+    {{comment.content}}
+  </span>
+
+  <button class="btn btn-danger"
+          (click)="remove(comment.id)">
+    Удалить
+  </button>
+</p>

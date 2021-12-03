@@ -13,8 +13,14 @@ namespace TimeTracker.Domain.Services
         
         bool Exists(Guid id);
         
-        void Update(UpdateTask task);
+        Task Update(UpdateTask task);
         
         Task Create(NewTask task);
+        
+        List<TaskComment> AddComments(IEnumerable<NewComment> comments, Guid taskId);
+        
+        void RemoveComment(Guid id);
+
+        public bool CommentExists(Guid id);
     }
 }

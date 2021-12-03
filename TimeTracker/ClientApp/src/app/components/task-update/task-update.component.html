@@ -1,0 +1,24 @@
+<div class="card card-body" tabindex="-1" role="dialog">
+  <div class="form-group">
+    <label>Имя</label>
+    <input required id="name" [(ngModel)]="task.name" class="form-control"/>
+    <span *ngIf="errors.name != ''" class="text-danger">{{errors.name}}</span>
+  </div>
+  <div class="form-group">
+    <label>Проект</label>
+    <app-projects-select (idChanged)="onProjectIdChanged($event)"></app-projects-select>
+  </div>
+  <div class="form-group">
+    <label>Время начала</label>
+    <input id="startDate" type="datetime-local" class="form-control" [(ngModel)]="task.startDate"/>
+    <span *ngIf="errors.startDate != ''" class="text-danger">{{errors.startDate}}</span>
+  </div>
+  <div class="form-group">
+    <label>Время окончания</label>
+    <input id="endDate" type="datetime-local" class="form-control" [(ngModel)]="task.endDate"/>
+  </div>
+  <app-comments-update [task]="task"></app-comments-update>
+  <app-task-description
+        (valueChanged)="addComments($event)"></app-task-description>
+  <button class="btn btn-primary" (click)="onSubmit()">Обновить</button>
+</div>
