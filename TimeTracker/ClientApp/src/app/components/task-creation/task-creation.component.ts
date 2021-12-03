@@ -13,13 +13,10 @@ import {CommentType, NewTask, NewTaskComment} from "../../../shared/models";
 export class TaskCreationComponent implements OnInit {
   newTask: NewTask = {
     name: '',
-    startDate: new Date().toISOString(),
+    startDate: null,
     projectId: "",
     endDate: new Date(0).toISOString(),
-    comments: [{
-      type: CommentType.Text,
-      content: ''
-    }]
+    comments: []
   };
 
   errors = {
@@ -42,20 +39,27 @@ export class TaskCreationComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.newTask.name == '') {
-      this.errors.name = 'Название обязательно';
+    const newTask = this.newTask;
+    const errors = this.errors;
+    if (newTask.name == '') {
+      errors.name = 'Название обязательно';
       return;
     }
 
-    const start = new Date(this.newTask.startDate);
-    const end = new Date(this.newTask.endDate);
+    if (newTask.startDate == null) {
+      errors.startDate = 'Дана начала обязательное поле';
+      return;
+    }
+
+    const start = new Date(newTask.startDate);
+    const end = new Date(newTask.endDate);
     if (end.getTime() != 0 && start > end) {
-      this.errors.startDate = 'Дата начала не может быть больше даты окончания';
+      errors.startDate = 'Дата начала не может быть больше даты окончания';
       return;
     }
 
-    console.log(this.newTask);
-    const task = await this.tasksService.create(this.newTask);
+    console.log(newTask);
+    const task = await this.tasksService.create(newTask);
     this.newTaskService.update(task);
 
     await this.startHideAnimation();
@@ -69,5 +73,6 @@ export class TaskCreationComponent implements OnInit {
 
   onDescriptionChanged(comments: NewTaskComment[]) {
     this.newTask.comments = comments;
+    console.log(comments)
   }
 }

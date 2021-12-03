@@ -42,7 +42,9 @@ export class TaskUpdateComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     this.tasksService
       .getTaskById(id)
-      .subscribe(task => this.task = task)
+      .toPromise()
+      .then(task => this.task = task)
+      .catch(err => this.router.navigateByUrl('/not-found'))
   }
 
   async onSubmit() {

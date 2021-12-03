@@ -17,6 +17,6 @@ namespace TimeTracker.ViewModels.Task
 
         public DateTime EndDate { get; set; }
 
-        public List<NewComment> Comments { get; set; }
+        public List<NewComment> Comments { get; set; } = new();
     }
 }

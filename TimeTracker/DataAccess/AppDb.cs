@@ -14,10 +14,5 @@ namespace TimeTracker.DataAccess
         public AppDb(DbContextOptions options): base(options)
         {
         }
-        
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=TimeTracker;Username=root;Password=root");
-        }
     }
 }

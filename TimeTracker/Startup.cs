@@ -34,7 +34,11 @@ namespace TimeTracker
             });
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
-            services.AddDbContext<AppDb>();
+            services.AddDbContext<AppDb>(options =>
+            {
+                var connection = Configuration.GetConnectionString("Default");
+                options.UseMySql(connection, ServerVersion.AutoDetect(connection));
+            });
             services.AddTransient<ITasksService, TasksService>();
             services.AddTransient<IProjectService, ProjectService>();
         }

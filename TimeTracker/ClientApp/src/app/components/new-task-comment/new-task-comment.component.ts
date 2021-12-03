@@ -42,6 +42,6 @@ export class NewTaskCommentComponent {
     if (this.textComment.content != '') {
       comments.push(this.textComment);
     }
-    this.valueChanged.emit()
+    this.valueChanged.emit(comments)
   }
 }

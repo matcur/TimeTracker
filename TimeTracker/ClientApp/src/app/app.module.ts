@@ -16,6 +16,7 @@ import { NewTaskCommentComponent } from './components/new-task-comment/new-task-
 import { TaskUpdateComponent } from './components/task-update/task-update.component';
 import { CommentsUpdateComponent } from './components/comments-update/comments-update.component';
 import {TaskCommentsComponent} from "./components/task-comments/task-comments.component";
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,14 @@ const routes: Routes = [
     path: 'tasks/:id',
     component: TaskUpdateComponent
   },
+  {
+    path: 'not-found',
+    component: NotFoundComponent
+  },
+  {
+    path: '*path',
+    component: NotFoundComponent
+  },
 ]
 
 @NgModule({
@@ -48,6 +57,7 @@ const routes: Routes = [
     TaskUpdateComponent,
     TaskCommentsComponent,
     CommentsUpdateComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
